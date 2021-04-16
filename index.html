@@ -1,12 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adding maps using the JS API</title>
+    <title>Add Map</title>
+
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        margin: 5rem auto;
+        height: 500px;
+        /* The height is 400 pixels */
+        width: 50%;
+        /* The width is the width of the web page */
+      }
+    </style>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of NYC
+        const nyc = { lat: 40.78343, lng: -73.96625 };
+        // The map, centered at NYC
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 11,
+          center: nyc,
+        });
+        // The marker, positioned at NYC
+        const marker = new google.maps.Marker({
+          position: nyc,
+          map: map,
+        });
+      }
+    </script>
   </head>
   <body>
-    <h1>hello</h1>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsHNVO1lDvFtxkvQ_JorTQTL_nD7vaE4&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
   </body>
 </html>
